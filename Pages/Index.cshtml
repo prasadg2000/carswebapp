@@ -1,0 +1,34 @@
+﻿@page
+@using carswebapp.Manufacturers;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome PG's Car Showroom'. We offer below Models per Manufaturer </h1>
+    <table class="table table-bordered">
+        <thead>
+
+            <tr>
+                <th scope="col"> Manufacturer</th>
+                <th scope="col"> Model</th>
+                <th scope="col"> Type</th>
+                <th scope="col"> Price</th>
+                <th scope="col"> DiscountPercent</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model.course)
+            {
+                <tr>
+                    <th scope="row">@course.Manufacturer</th>
+                    <td scope="row">@course.Model</td>
+                    <td scope="row">@course.Type</td>
+                    <td scope="row">@course.Price</td>
+                    
+                </tr>
+            };
+        </tbody>
+    </table>
+</div>
