@@ -6,7 +6,7 @@ using carswebapp.Manufacturers;
 
 namespace carswebapp.Cars
 {
-    public class Models
+    public class Brands
     {
         //  private static string db_database = "";
         //  private static string db_password = "";
@@ -35,7 +35,7 @@ namespace carswebapp.Cars
             //  return new SqlConnection(_builder.ConnectionString);
         }
         //public List<Offerings> GetModels(string Manufacturer string Model, string type, int Price in USD, int DiscountPercent)
-        public List<Offerings> GetModels()
+        public List<Offerings> GetBrands()
         {
             List<Offerings> _model_lst = new List<Offerings>();
 
@@ -52,7 +52,7 @@ namespace carswebapp.Cars
             {
                 while (_reader.Read())
                 {
-                    Offerings model = new Offerings()
+                    Offerings models = new Offerings()
                     {
                         Manufacturer = _reader.GetString(0),
                         Model = _reader.GetString(1),
@@ -60,12 +60,17 @@ namespace carswebapp.Cars
                         Price = _reader.GetString(3),
                         
                     };
-                    _model_lst.Add(model);
+                    _model_lst.Add(models);
                 }
                 _conn.Close();
 
                 return _model_lst;
             }
+        }
+
+        internal List<Offerings> GetModels()
+        {
+            throw new NotImplementedException();
         }
     }
 }
