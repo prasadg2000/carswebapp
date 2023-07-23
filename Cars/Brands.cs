@@ -34,8 +34,8 @@ namespace carswebapp.Cars
             // _builder.InitialCatalog = db_database;
             //  return new SqlConnection(_builder.ConnectionString);
         }
-        //public List<Offerings> GetModels(string Manufacturer string Model, string type, int Price in USD, int DiscountPercent)
-        public List<Offerings> GetBrands()
+        //public List<Offerings> GetModels(string Manufacturer, string Model, string type, int Price in USD, int DiscountPercent)
+        public List<Offerings> GetModels()
         {
             List<Offerings> _model_lst = new List<Offerings>();
 
@@ -52,25 +52,20 @@ namespace carswebapp.Cars
             {
                 while (_reader.Read())
                 {
-                    Offerings models = new Offerings()
+                    Offerings course = new Offerings()
                     {
                         Manufacturer = _reader.GetString(0),
                         Model = _reader.GetString(1),
                         Type = _reader.GetString(2),
                         Price = _reader.GetString(3),
-                        
+
                     };
-                    _model_lst.Add(models);
+                    _model_lst.Add(course);
                 }
                 _conn.Close();
 
                 return _model_lst;
             }
-        }
-
-        internal List<Offerings> GetModels()
-        {
-            throw new NotImplementedException();
         }
     }
 }
