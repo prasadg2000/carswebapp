@@ -12,20 +12,20 @@
 
             <tr>
                 <th scope="col"> Manufacturer</th>
-                <th scope="col"> Model</th>
+                <th scope="col"> Variant</th>
                 <th scope="col"> Type</th>
                 <th scope="col"> Price</th>
 
              </tr>
         </thead>
         <tbody>
-            @foreach (var course in Model.Models)
+            @foreach (var vehicle in Model.vehicle)
             {
                 <tr>
-                    <th scope="row">@course.Manufacturer</th>
-                    <td scope="row">@course.Model</td>
-                    <td scope="row">@course.Type</td>
-                    <td scope="row">@course.Price</td>
+                    <th scope="row">@vehicle.Manufacturer</th>
+                    <td scope="row">@vehicle.Variant</td>
+                    <td scope="row">@vehicle.Type</td>
+                    <td scope="row">@vehicle.Price</td>
                     
                 </tr>
             };

@@ -6,13 +6,13 @@ namespace carswebapp.Pages;
 
 public class IndexModel : PageModel
 {
-    public List<Offerings> Models;
+    public List<Offerings> vehicle;
 
     //public void OnGet(Models model)
     public void OnGet()
     {
         Brands brands = new Brands();
         //VendorServices vendorServices1 = vendorServices;
-        Models = brands.GetModels();
+        vehicle = brands.GetModels();
     }
 }

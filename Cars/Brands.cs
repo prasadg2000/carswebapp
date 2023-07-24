@@ -14,34 +14,35 @@ namespace carswebapp.Cars
         //  private static string db_user = "";
         private SqlConnection GetConnection()
         {
-            TokenCredential tokenCredential = new DefaultAzureCredential();
+                TokenCredential tokenCredential = new DefaultAzureCredential();
 
-            string KeyVaultUrl = "https://kvcars2023.vault.azure.net/";
-            string secretName = "dbconnectstringcars";
+                string KeyVaultUrl = "https://kvcars2023.vault.azure.net/";
 
-            SecretClient secretClient = new SecretClient(new Uri(KeyVaultUrl), tokenCredential);
+                string secretName = "dbconnectstringcars";
 
-            var secret = secretClient.GetSecret(secretName);
+                SecretClient secretClient = new SecretClient(new Uri(KeyVaultUrl), tokenCredential);
 
-            string connectionString = secret.Value.Value;
+                var secret = secretClient.GetSecret(secretName);
 
-            return new SqlConnection(connectionString);
+                string connectionString = secret.Value.Value;
 
-            //var _builder = new SqlConnectionStringBuilder();
-            //_builder.DataSource = db_source;
-            // _builder.UserID = db_user;
-            // _builder.Password = db_password;
-            // _builder.InitialCatalog = db_database;
-            //  return new SqlConnection(_builder.ConnectionString);
+                return new SqlConnection(connectionString);
+
+                //var _builder = new SqlConnectionStringBuilder();
+                //_builder.DataSource = db_source;
+                // _builder.UserID = db_user;
+                // _builder.Password = db_password;
+                // _builder.InitialCatalog = db_database;
+                //  return new SqlConnection(_builder.ConnectionString);
         }
-        //public List<Offerings> GetModels(string Manufacturer, string Model, string type, int Price in USD, int DiscountPercent)
+        //public List<Offerings> GetModels(string Manufacturer, string Variant, string type, int Price in USD, int DiscountPercent)
         public List<Offerings> GetModels()
         {
-            List<Offerings> _model_lst = new List<Offerings>();
+            List<Offerings> _variant_lst = new List<Offerings>();
 
             SqlConnection _conn = GetConnection();
 
-            string _statement = "SELECT Manufacturer,Model,Type,Price from Models";
+            string _statement = "SELECT Manufacturer,Variant,Type,Price from Models";
 
             _conn.Open();
 
@@ -52,19 +53,19 @@ namespace carswebapp.Cars
             {
                 while (_reader.Read())
                 {
-                    Offerings course = new Offerings()
+                    Offerings vehicle = new Offerings()
                     {
                         Manufacturer = _reader.GetString(0),
-                        Model = _reader.GetString(1),
+                        Variant = _reader.GetString(1),
                         Type = _reader.GetString(2),
                         Price = _reader.GetString(3),
 
                     };
-                    _model_lst.Add(course);
+                    _variant_lst.Add(vehicle);
                 }
                 _conn.Close();
 
-                return _model_lst;
+                return _variant_lst;
             }
         }
     }
