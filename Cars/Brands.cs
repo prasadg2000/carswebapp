@@ -38,7 +38,7 @@ namespace carswebapp.Cars
         //public List<Offerings> GetModels(string Manufacturer, string Variant, string type, int Price in USD, int DiscountPercent)
         public List<Offerings> GetModels()
         {
-            List<Offerings> _variant_lst = new List<Offerings>();
+            List<Offerings> _mycars_lst = new List<Offerings>();
 
             SqlConnection _conn = GetConnection();
 
@@ -61,11 +61,11 @@ namespace carswebapp.Cars
                         Price = _reader.GetString(3),
 
                     };
-                    _variant_lst.Add(vehicle);
+                    _mycars_lst.Add(vehicle);
                 }
                 _conn.Close();
 
-                return _variant_lst;
+                return _mycars_lst;
             }
         }
     }
