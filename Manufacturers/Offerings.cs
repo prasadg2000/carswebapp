@@ -3,6 +3,8 @@
     public class Offerings
     {
 
+        public string ProductImage { get; set; }
+
         public string Manufacturer { get; set; }
 
         public string Variant { get; set; }

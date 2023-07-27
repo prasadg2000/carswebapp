@@ -42,7 +42,7 @@ namespace carswebapp.Cars
 
             SqlConnection _conn = GetConnection();
 
-            string _statement = "SELECT Manufacturer,Variant,Type,Price from Models";
+            string _statement = "SELECT ProductImage,Manufacturer,Variant,Type,Price from Models";
 
             _conn.Open();
 
@@ -55,10 +55,11 @@ namespace carswebapp.Cars
                 {
                     Offerings vehicle = new Offerings()
                     {
-                        Manufacturer = _reader.GetString(0),
-                        Variant = _reader.GetString(1),
-                        Type = _reader.GetString(2),
-                        Price = _reader.GetString(3),
+                        ProductImage= _reader.GetString(0),
+                        Manufacturer = _reader.GetString(1),
+                        Variant = _reader.GetString(2),
+                        Type = _reader.GetString(3),
+                        Price = _reader.GetString(4),
 
                     };
                     _mycars_lst.Add(vehicle);

@@ -6,11 +6,12 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome PG's Car Showroom'. We offer below Models per Manufaturer </h1>
+    <h1 class="display-4">Welcome VijayM Motors Showroom </h1>
     <table class="table table-bordered">
         <thead>
 
             <tr>
+                <th scope="col"> ProductImage</th>
                 <th scope="col"> Manufacturer</th>
                 <th scope="col"> Variant</th>
                 <th scope="col"> Type</th>
@@ -22,6 +23,7 @@
             @foreach (var vehicle in Model.vehicle)
             {
                 <tr>
+                    <th scope="row">@vehicle.ProductImage</th>
                     <th scope="row">@vehicle.Manufacturer</th>
                     <td scope="row">@vehicle.Variant</td>
                     <td scope="row">@vehicle.Type</td>
